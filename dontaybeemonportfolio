@@ -109,6 +109,115 @@
       </ul>
     </div>
 
+<!-- Begin Dontay Beemon Deck Section -->
+<section id="db-deck" style="font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; padding:48px 16px; background:#f6f8fb;">
+  <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns: 1fr 480px; gap:32px; align-items:start;">
+    
+    <!-- Left: Info & CTAs -->
+    <div>
+      <h1 style="margin:0 0 8px 0; color:#0F1115; font-size:32px; letter-spacing: -0.5px;">
+        AI Automation Expert — Pitch Deck
+      </h1>
+      <p style="margin:0 0 18px 0; color:#333; font-size:15px;">
+        Presented by <strong>Dontay Beemon</strong>. View the master deck, review sample blueprints, and book a discovery session.
+      </p>
+
+      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:18px;">
+        <!-- Replace PDF_URL below with your uploaded file location -->
+        <a id="db-download" href="PDF_URL" download
+           style="display:inline-block;padding:10px 18px;background:#1A73E8;color:#fff;border-radius:8px;text-decoration:none;font-weight:600;">
+          Download Deck (PDF)
+        </a>
+
+        <button id="db-view" type="button"
+           style="display:inline-block;padding:10px 18px;border-radius:8px;background:#ffffff;border:1px solid #d7dbe0;cursor:pointer;font-weight:600;">
+          View in Browser
+        </button>
+
+        <a href="mailto:dontaybee@gmail.com" style="display:inline-block;padding:10px 18px;border-radius:8px;background:transparent;border:1px solid #d7dbe0;text-decoration:none;color:#111;font-weight:600;">
+          Email Me
+        </a>
+
+        <!-- Optional Book call link (replace with your booking URL) -->
+        <a href="https://calendly.com/your-calendar" target="_blank"
+           style="display:inline-block;padding:10px 18px;border-radius:8px;background:#34A853;color:#fff;text-decoration:none;font-weight:600;">
+          Book a Call
+        </a>
+      </div>
+
+      <p style="margin:0;color:#555;font-size:13px;">
+        Quick overview: AI agents, CRM automation, document pipelines, and ROI-focused workflows. Use the deck during sales conversations or as a downloadable leave-behind.
+      </p>
+
+      <!-- Small metadata -->
+      <div style="margin-top:18px;color:#666;font-size:12px;">
+        <strong>Contact</strong>: dontaybee@gmail.com • <strong>Portfolio</strong>: dontaybeemonportfolio
+      </div>
+    </div>
+
+    <!-- Right: PDF embed + QR -->
+    <div style="background:#fff;border-radius:12px;padding:14px;box-shadow:0 6px 18px rgba(18,24,38,0.06);">
+      <div style="display:flex; gap:12px; align-items:center;">
+        <div style="flex:1;">
+          <!-- PDF viewer: uses <object> as fallback-friendly embed -->
+          <div id="db-pdf-wrap" style="width:100%; height:360px; border-radius:8px; overflow:hidden; background:#111;">
+            <object id="db-object" data="PDF_URL" type="application/pdf" width="100%" height="100%">
+              <!-- Browser fallback -->
+              <div style="padding:18px;color:#fff;background:#111;height:100%;display:flex;align-items:center;justify-content:center;">
+                <a id="db-fallback-download" href="PDF_URL" download style="color:#1A73E8;background:#fff;padding:10px 16px;border-radius:6px;text-decoration:none;font-weight:600;">
+                  Download the deck (PDF)
+                </a>
+              </div>
+            </object>
+          </div>
+        </div>
+
+        <!-- QR code (small) -->
+        <div style="width:110px; text-align:center;">
+          <!-- If you prefer dynamic QR, you can generate and upload one, then swap the src -->
+          <img id="db-qr" src="QR_IMAGE_URL" alt="Scan to view" style="width:96px;height:96px;border-radius:6px;border:1px solid #eee;">
+          <div style="font-size:11px;color:#666;margin-top:6px;">Scan to open</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  (function(){
+    // Replace placeholders quickly if you want to update via JS
+    const PDF_URL = 'PDF_URL'; // <-- Replace with hosted PDF path (absolute)
+    const QR_URL = 'QR_IMAGE_URL'; // <-- Replace with hosted QR image path (absolute)
+
+    // Wire actual URLs into DOM (only if you put placeholders)
+    document.querySelectorAll('a[href="PDF_URL"]').forEach(a => a.href = PDF_URL);
+    document.querySelectorAll('object[data="PDF_URL"]').forEach(o => o.data = PDF_URL);
+    document.querySelectorAll('a[href="PDF_URL"][download]').forEach(a => a.href = PDF_URL);
+    document.querySelectorAll('img#db-qr').forEach(img => { if(img.src.indexOf('QR_IMAGE_URL')>-1) img.src = QR_URL; });
+
+    // View in Browser — open PDF in new tab
+    document.getElementById('db-view').addEventListener('click', function(){
+      window.open(PDF_URL, '_blank');
+      trackEvent('view_deck');
+    });
+    document.getElementById('db-download').addEventListener('click', function(){
+      trackEvent('download_deck');
+    });
+    document.getElementById('db-fallback-download')?.addEventListener('click', function(){
+      trackEvent('download_deck_fallback');
+    });
+
+    // Simple analytics hook: replace with your analytics call
+    function trackEvent(action){
+      console.log('Deck event:', action);
+      // Example: if using Google Analytics gtag:
+      // window.gtag && window.gtag('event', action, { 'event_category': 'Deck', 'event_label': 'Master Deck' });
+    }
+  })();
+</script>
+<!-- End Dontay Beemon Deck Section -->
+
     <div class="card">
       <h2>Contact</h2>
       <p>Interested in working together? Reach out to connect or request a project.</p>
